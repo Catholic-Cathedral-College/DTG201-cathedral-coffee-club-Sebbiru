@@ -8,10 +8,10 @@ def intro(name):
   yes = True
   while yes:
     show_menu = input("Would you like to see the menu?:")
-    if show_menu == 'y' or show_menu == 'yes':
+    if show_menu.lower() == 'y' or show_menu.lower() == 'yes':
       print(*menu, sep = "\n")
       yes = False
-    elif show_menu == 'n' or show_menu == 'no':
+    elif show_menu.lower() == 'n' or show_menu.lower() == 'no':
       print("Do you not want to order?")
     
     else:
