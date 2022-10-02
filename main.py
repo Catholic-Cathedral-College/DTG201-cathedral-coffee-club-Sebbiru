@@ -1,109 +1,97 @@
-#Make function for a introduction
-def title():
-  print("                ----%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%----")
-  print("                          ♥ Welcome to the Cafe ♥")
-  print("                ----%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%----")
 
-#_______________________________main
-title()
-
-#make list of menu
+#Make list of menu
 menu = ["1.Flat white $3.00", "2.Cappuccino $3.00", "3.Latte $3.50", "4.Decaf $3.50", "5.Hot Chocolate $4.00"]
-#Make function to ask customer for their name and menu
-def username(name):
+
+#Make introduction
+def intro(name):
   print("Welcome " + name)
-
-#_____________________________main
-username(input("(っ◔◡◔)っWhat may I call you dear customer?:"))
-
-#Make a function for an option to show the Cafe's menu
-def ask_menu():
-  ask_menu = input("Would you like to see the menu? [Yes/No]:").lower()
-  while True:
-    if ask_menu == 'y' or ask_menu == 'yes':
-      print(menu[0])
-      print(menu[1])
-      print(menu[2])
-      print(menu[3])
-      print(menu[4])
-      break
-    elif ask_menu == 'n' or ask_menu == 'no':
+  yes = True
+  while yes:
+    show_menu = input("Would you like to see the menu?:")
+    if show_menu == 'y' or show_menu == 'yes':
+      print(*menu, sep = "\n")
+      yes = False
+    elif show_menu == 'n' or show_menu == 'no':
       print("Do you not want to order?")
-      ask_menu()
-      break
-      
+    
     else:
       print("Please answer either yes or no")
-      menu()
-      break
+      
+#Make list for order
+Coffee = [0, 0, 0, 0, 0]
 
-#___________________________main
-ask_menu()
-
-
-#_________main (Values of the coffees)
-Coffee1 = 0
-Coffee2 = 0
-Coffee3 = 0
-Coffee4 = 0
-Coffee5 = 0
-
-#Make function that asks for customer's order
+#Function for asking the customer for their choice & show customer their order
 def order():
-  order = input("What would you like to order? [1-5]:")
-  while True:
-    if order == "1":
-      print("you orderd 1")
-      Coffee1 += 1
-      break
-    elif order == "2":
-      print("you orderd 2")
-      Coffee2 += 1
-      break
-    elif order == "3":
-      print("you orderd 3")
-      Coffee3 += 1
-      break
-    elif order == "4":
-      print("you orderd 4")
-      Coffee4 += 1
-      break
-    elif order == "5":
-      print("you orderd 5")
-      Coffee5 += 1
-      break
-    elif order == "6":
-      break
+  yes = True
+  while yes:
+    choice = input("Please Choose from the menu [1-5]: ")
+    if choice == "1":
+      print("")
+      print("you orderd a Flat white")
+      Coffee[0] += 1
+      print("[Your order]\nFlat white:", Coffee[0], "\nCappuccino:", Coffee[1], "\nLatte:", Coffee[2], "\nDecaf:", Coffee[3], "\nHot Chocolate:", Coffee[4]) 
+      print("")
+      print("Would you like to order anything else? (If not say no) ")
+    elif choice == "2":
+      print("")
+      print("you orderd a Cappuccino")
+      Coffee[1] += 1 
+      print("[Your order]\nFlat white:", Coffee[0], "\nCappuccino:", Coffee[1], "\nLatte:", Coffee[2], "\nDecaf:", Coffee[3], "\nHot Chocolate:", Coffee[4])
+      print("")
+      print("Would you like to order anything else? (If not say no) ")
+    elif choice == "3":
+      print("")
+      print("you orderd a Latte")
+      Coffee[2] += 1
+      print("[Your order]\nFlat white:", Coffee[0], "\nCappuccino:", Coffee[1], "\nLatte:", Coffee[2], "\nDecaf:", Coffee[3], "\nHot Chocolate:", Coffee[4])
+      print("")
+      print("Would you like to order anything else? (If not say no) ")
+    elif choice == "4":
+      print("")
+      print("you orderd a Decaf")
+      Coffee[3] += 1
+      print("[Your order]\nFlat white:", Coffee[0], "\nCappuccino:", Coffee[1], "\nLatte:", Coffee[2], "\nDecaf:", Coffee[3], "\nHot Chocolate:", Coffee[4])
+      print("")
+      print("Would you like to order anything else? (If not say no) ")
+    elif choice == "5":
+      print("")
+      print("you orderd a Hot Chocolate")
+      Coffee[4] += 1
+      print("[Your order]\nFlat white:", Coffee[0], "\nCappuccino:", Coffee[1], "\nLatte:", Coffee[2], "\nDecaf:", Coffee[3], "\nHot Chocolate:", Coffee[4])
+      print("")
+      print("Would you like to order anything else? (If not say no) ")
+    elif choice == 'n' or choice == 'no':
+      print("")
+      print("[Your order]\nFlat white:", Coffee[0], "\nCappuccino:", Coffee[1], "\nLatte:", Coffee[2], "\nDecaf:", Coffee[3], "\nHot Chocolate:", Coffee[4])
+      yes = False
     else:
+      print("")
       print("Please answer between 1-5")
 
-      
-order()
+#Execute all functions
+intro(input("Name:"))
+order() 
 
-#How many of each
-while True:
-  if Coffee1 == 1:
-    Coffee1_num = input("How many Flat whites would you like to order?:")
-    break
+#Add up Everything and show total
+pay = 0
 
-  if Coffee2 == 2:
-    Coffee2_num = input("How many Cappuccinos would you like to order?:")
-    break
+if Coffee[0] >= 1:
+  pay += 3 * Coffee[0]
+if Coffee[1] >= 1:
+  pay += 3 * Coffee[1]
 
-  if Coffee3 == 3:
-    Coffee3_num = input("How many Lattes would you like to order?:")
-    break
-
-  if Coffee4 == 4:
-    Coffee4_num = input("How many Decafs would you like to order?:")
-    break
-
-  if Coffee5 == 5:
-    Coffee5_num = input("How many Hot Chocolates would you like to order?:")
-    break
-
-
-
+if Coffee[2] >= 1:
+  pay += 3.5 * Coffee[2]
   
-    
+if Coffee[3] >= 1:
+  pay += 3.5 * Coffee[3]
   
+if Coffee[4] >= 1:
+  pay += 4 * Coffee[4]
+
+print("")
+print("Payment Total: $",pay, )
+
+
+
+
